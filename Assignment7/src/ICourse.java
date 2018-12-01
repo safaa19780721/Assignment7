@@ -1,4 +1,3 @@
-
 public interface ICourse {
 	// Determine if the capacity for this course has been reached.
 	boolean isFull();
