@@ -66,7 +66,7 @@ public class Controller implements IController{
 		
 		try {
 			
-			while( file1.ready() ) {
+			while(file1.ready() ) {
 				
 				if( DEBUG ) {
 					System.err.println("Reading arg2 file");
@@ -80,6 +80,15 @@ public class Controller implements IController{
 				String sDept = field[2];
 				String cDept = field[3];
 				int cNum = Integer.parseInt(field[4]);
+				double [][] GPA_ARRAY = new double[2][4];
+				GPA_ARRAY[0][0] = Double.parseDouble(field[5]);
+				GPA_ARRAY[1][0] = Double.parseDouble(field[6]);
+				GPA_ARRAY[0][1] = Double.parseDouble(field[7]);
+				GPA_ARRAY[1][1] = Double.parseDouble(field[8]);
+				GPA_ARRAY[0][2] = Double.parseDouble(field[9]);
+				GPA_ARRAY[1][2] = Double.parseDouble(field[10]);
+				GPA_ARRAY[0][3] = Double.parseDouble(field[11]);
+				GPA_ARRAY[1][3] = Double.parseDouble(field[12]);
 				
 				if( DEBUG ) {
 					System.err.println("Adding " + sName
@@ -87,7 +96,7 @@ public class Controller implements IController{
 				}
 				
 				Request nRequest = new Request(sName, sDept,
-						sLevel, cDept, cNum);
+						sLevel, cDept, cNum, GPA_ARRAY);
 				addRequest(nRequest);
 				
 			}
@@ -119,8 +128,9 @@ public class Controller implements IController{
 		for(int i = 0; i < courses.size(); i++) {
 			System.out.println(courses.get(i).toString());
 		}
-		
-		
+		System.out.println();
+		this.requests.Qprint();
+		System.out.println();
 		while( !requests.isEmpty() ) {
 			
 			Request pending = requests.dequeue();
@@ -145,7 +155,9 @@ public class Controller implements IController{
 		}
 		
 		System.out.println();
-		
+		this.requests.Qprint();
+		System.out.println();
+		System.out.println();
 	}
 
 	public Course getCourse(String courseDept, int courseNumber) {

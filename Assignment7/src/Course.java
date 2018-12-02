@@ -37,7 +37,7 @@ public class Course implements ICourse{
 		this.enrollment++;
 		
 		System.out.println(name + " successfully registered "
-				+ this.dept + " for " + this.number);
+				+ this.dept + " " + this.number);
 		
 	}
 

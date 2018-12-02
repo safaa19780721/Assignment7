@@ -10,7 +10,39 @@ public class PriorityQueue <E extends Comparable<E>> {
 	// Add object received to the priority queue taking into consideration the rules governing priority.
 	public void enqueue(E data)
 	{
-		//TODO: FIX ME
+		if(head == null)
+		{
+			head = new Node<E>(data, head);
+			return;
+		}
+		Node<E> temp = head;
+		boolean done = false;
+		Node<E> prev = null;
+		int i = 0; 
+		while(temp != null)
+		{
+			if(data.compareTo(temp.data) == 0)
+			{
+				done = true;
+				if(i == 0)
+				{
+					head = new Node<E>(data, head);
+					return;
+				}
+				else
+				{
+					prev.next = new Node<E>(data, temp);
+					return;
+				}
+			}
+			i++;
+			prev = temp;
+			temp = temp.next;
+		}
+		if(done == false)
+		{
+			prev.next = new Node<E>(data);
+		}
 	}
 	// Remove the next object to be processed from the priority queue.
 	public E dequeue()
@@ -22,12 +54,18 @@ public class PriorityQueue <E extends Comparable<E>> {
 	// Print the contents of the queue 
 	public void Qprint()
 	{	
+		System.out.println("<<<<<<<<<<<< Beginning of Queue Contents >>>>>>>>>>>>>>>>>");
+		if(head == null)
+		{
+			System.out.println("Queue is Empty ");
+		}
 		Node<E> temp = head;
 		while(temp != null)
 		{
-			System.out.println(temp.data); //TODO: FIX ME
+			System.out.println("Request@" + Integer.toHexString(System.identityHashCode(temp.data))); //TODO: FIX ME
 			temp = temp.next;
 		}
+		System.out.println("<<<<<<<<<<<< End of Queue Contents >>>>>>>>>>>>>>>>>");
 	}
 
 }
