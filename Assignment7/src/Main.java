@@ -14,6 +14,5 @@ public class Main {
 		control.readRequestFile();
 		control.processRequests();
 		control.printClassList();
-
 	}
 }
