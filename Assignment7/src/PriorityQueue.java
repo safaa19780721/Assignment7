@@ -74,7 +74,7 @@ public class PriorityQueue <E extends Comparable<E>> {
 		Node<E> temp = head;
 		while(temp != null)
 		{
-			System.out.println("Request@" + Integer.toHexString(System.identityHashCode(temp.data))); //TODO: FIX ME
+			System.out.println("Request@" + Integer.toHexString(System.identityHashCode(temp.data)));
 			temp = temp.next;
 		}
 		System.out.println("<<<<<<<<<<<< End of Queue Contents >>>>>>>>>>>>>>>>>");

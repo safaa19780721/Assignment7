@@ -5,7 +5,6 @@ public class Request implements Comparable<Request> {
 	private String studentLevel;
 	private String courseDept;
 	private int courseNumber;
-	private double [][] GPA_ARRAY;
 	private double GPA;
 
 	/**
@@ -24,7 +23,6 @@ public class Request implements Comparable<Request> {
 		this.studentLevel = studentLevel;
 		this.courseDept = courseDept;
 		this.courseNumber = courseNumber;
-		this.GPA_ARRAY = GPA_ARRAY;
 		this.GPA = this.GPA_Cal(GPA_ARRAY);
 	}
 
@@ -98,14 +96,14 @@ public class Request implements Comparable<Request> {
 	 * @param GPA_Array a 2d array containing the last 4 grades received and credit hours of those courses row 0 should be grades and row 1 should be credit hours
 	 * @return the GPA for the given student
 	 */
-	public double GPA_Cal(double[][] GPA_Array)
+	private double GPA_Cal(double[][] GPA_Array)
 	{
 		double GPA = 0;
 		double GPA_hours = 0;
 		for(int i = 0; i < 4; i++)
 		{
-			GPA += GPA_ARRAY[0][i] * GPA_ARRAY[1][i];
-			GPA_hours += GPA_ARRAY[1][i];
+			GPA += GPA_Array[0][i] * GPA_Array[1][i];
+			GPA_hours += GPA_Array[1][i];
 		}
 		GPA = GPA / GPA_hours;
 		return GPA;
