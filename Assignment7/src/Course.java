@@ -9,14 +9,25 @@ public class Course implements ICourse{
 	private int enrollment;
 	private ArrayList<String> students;
 
+	/**
+	 * @return the department of the course
+	 */
 	public String getDept() {
 		return this.dept;
 	}
 
+	/**
+	 * @return the number of the course
+	 */
 	public int getNumber() {
 		return this.number;
 	}
 
+	/**
+	 * @param dept the department of the course
+	 * @param number the number of the course
+	 * @param capacity the maximum capacity of the course
+	 */
 	public Course(String dept, int number, int capacity) {
 		
 		this.dept = dept;
@@ -58,6 +69,11 @@ public class Course implements ICourse{
 		
 	}
 	
+	/**
+	 * @param dept the department of the course
+	 * @param number the number of the course
+	 * @return whether the course described in parameters matches this course or not
+	 */
 	public boolean thisCourse(String dept, int number) {
 		
 		boolean found = false;

@@ -2,12 +2,18 @@
 public class PriorityQueue <E extends Comparable<E>> {
 	private Node<E> head;
 	
-	// Determine if the priority queue is empty.
+	/**
+	 * Determine if the priority queue is empty.
+	 * @return true if the queue is empty, false otherwise
+	 */
 	public boolean isEmpty()
 	{
 		return head == null;
 	}
-	// Add object received to the priority queue taking into consideration the rules governing priority.
+	/**
+	 * Add object received to the priority queue taking into consideration the rules governing priority.
+	 * @param data the data that you want enqueued into the priority queue
+	 */
 	public void enqueue(E data)
 	{
 		if(head == null)
@@ -44,14 +50,20 @@ public class PriorityQueue <E extends Comparable<E>> {
 			prev.next = new Node<E>(data);
 		}
 	}
-	// Remove the next object to be processed from the priority queue.
+	// 
+	/**
+	 * Remove the next object to be processed from the priority queue.
+	 * @return the object that has been removed from the queue
+	 */
 	public E dequeue()
 	{
 		Node<E> temp = head;
 		head = head.next;
 		return temp.data;
 	}
-	// Print the contents of the queue 
+	/**
+	 * Print the contents of the queue 
+	 */
 	public void Qprint()
 	{	
 		System.out.println("<<<<<<<<<<<< Beginning of Queue Contents >>>>>>>>>>>>>>>>>");

@@ -11,6 +11,12 @@ public class Controller implements IController{
 	BufferedReader file0;
 	BufferedReader file1;
 
+	/**
+	 * @param requestQueue the priority queue of requests
+	 * @param courses the list of available courses
+	 * @param fileIn the input file with the courses 
+	 * @param fileIn1 the input file wit the requests
+	 */
 	public Controller(PriorityQueue<Request> requestQueue,
 			ArrayList<Course> courses, BufferedReader fileIn,
 			BufferedReader fileIn1) {

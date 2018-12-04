@@ -6,7 +6,16 @@ public class Request implements Comparable<Request> {
 	private String courseDept;
 	private int courseNumber;
 	private double [][] GPA_ARRAY;
-	// Constructor
+	private double GPA;
+
+	/**
+	 * @param studentName the name of the student requesting a course
+	 * @param studentDept the department that the student requesting a course is in
+	 * @param studentLevel the grade level of the student
+	 * @param courseDept the department the requested course is in
+	 * @param courseNumber the number of the requested course
+	 * @param GPA_ARRAY an array containing the last 4 grades received and credit hours of those courses
+	 */
 	public Request(String studentName, String studentDept, String studentLevel,
 				String courseDept, int courseNumber, double[][] GPA_ARRAY)
 	{
@@ -16,7 +25,9 @@ public class Request implements Comparable<Request> {
 		this.courseDept = courseDept;
 		this.courseNumber = courseNumber;
 		this.GPA_ARRAY = GPA_ARRAY;
+		this.GPA = this.GPA_Cal(GPA_ARRAY);
 	}
+
 	@Override
 	public int compareTo(Request o) 
 	{
@@ -47,21 +58,21 @@ public class Request implements Comparable<Request> {
 				return 1;
 			}
 		}
-		Double GPA1 = new Double(GPA_Cal(req1.GPA_ARRAY));
-		Double GPA2 = new Double(GPA_Cal(req2.GPA_ARRAY));
-		if(GPA1.compareTo(GPA2) != 0) 
+		double GPA1 = req1.GPA;
+		double GPA2 = req2.GPA;
+		if(GPA1 > GPA2) 
 		{
-			System.out.println("HERE2");
-			if(GPA1.compareTo(GPA2) > 0) 
-			{
-				return 0;
-			}
+			return 0;
 		}
 		return 1;
 	}
 
-	// Returns number of years to graduation (0 for seniors, 1 for juniors etc.). This is determined from the 
+	/**
+	 * Returns number of years to graduation (0 for seniors, 1 for juniors etc.). This is determined from the 
 	// student’s level – senior, junior, etc.
+	 * @param level the current grade level of the student
+	 * @return number of years to graduation
+	 */
 	public int yearsFromGraduation(String level)
 	{
 		if((level.replaceAll(" ", "")).equalsIgnoreCase("Senior"))
@@ -82,8 +93,12 @@ public class Request implements Comparable<Request> {
 		}
 	}
 
-	// Calculate the GPA for a particular student.
-	private double GPA_Cal(double[][] GPA_Array)
+	/**
+	 * Calculate the GPA for a particular student.
+	 * @param GPA_Array a 2d array containing the last 4 grades received and credit hours of those courses row 0 should be grades and row 1 should be credit hours
+	 * @return the GPA for the given student
+	 */
+	public double GPA_Cal(double[][] GPA_Array)
 	{
 		double GPA = 0;
 		double GPA_hours = 0;
@@ -96,19 +111,33 @@ public class Request implements Comparable<Request> {
 		return GPA;
 	}
 
-	// Getters for a student’s name and department, and the department and number of a course 
+	/**
+	 * @return the name of the student
+	 */
 	public String getName()
 	{
 		return studentName;
 	}
+	
+	/**
+	 * @return the department of the student
+	 */
 	public String getDepartment()
 	{
 		return studentDept;
 	}
+	
+	/**
+	 * @return the department of the requested course
+	 */
 	public String getCourseDept()
 	{
 		return courseDept;
 	}
+	
+	/**
+	 * @return the number of the requested course
+	 */
 	public int getCourseNumber()
 	{
 		return courseNumber;
